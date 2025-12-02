@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Techmax Spinner</title>
+
+<style>
+    body{
+        background:#111;
+        height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        font-family: Poppins, sans-serif;
+    }
+
+    /* SPINNER WRAPPER */
+    .spinner{
+        width:250px;
+        height:250px;
+        border-radius:50%;
+        position:relative;
+        animation: spin 3s linear infinite;
+        border:6px solid transparent;
+        border-top:6px solid #9cff45;
+        border-right:6px solid #71d2ff;
+    }
+
+    @keyframes spin{
+        from{transform:rotate(0deg);}
+        to{transform:rotate(360deg);}
+    }
+
+    /* INNER LOGO */
+    .center-logo{
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform:translate(-50%,-50%);
+        text-align:center;
+        animation: fadeIn 2s ease forwards;
+    }
+
+    @keyframes fadeIn{
+        from{opacity:0;}
+        to{opacity:1;}
+    }
+
+    .tech{
+        font-size:45px;
+        font-weight:900;
+        color:white;
+    }
+    .tech .t{color:#ddd;}
+    .tech .ech{color:#bbb;}
+    .tech .h{color:#9cff45;}
+    .tech .max{color:white;}
+
+    .slogan{
+        font-size:22px;
+        color:#b6ff7a;
+        font-family: "Brush Script MT", cursive;
+        margin-top:-5px;
+    }
+
+    /* WAVES / MOTION */
+    .wave{
+        font-size:30px;
+        color:#71d2ff;
+        animation: wave 2s ease-in-out infinite;
+    }
+
+    @keyframes wave{
+        0%{transform:translateX(0);}
+        50%{transform:translateX(8px);}
+        100%{transform:translateX(0);}
+    }
+
+</style>
+</head>
+<body>
+
+<div class="spinner">
+
+    <div class="center-logo">
+        <div class="tech">
+            <span class="t">T</span><span class="ech">ech</span><span class="h">h</span><span class="max">max</span>
+        </div>
+        <div class="slogan">Tours and Safaris</div>
+        <div class="wave">~~ ~~</div>
+    </div>
+
+</div>
+
+</body>
+</html>

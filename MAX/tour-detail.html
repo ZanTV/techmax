@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Detailed information about our tours in Zanzibar with TECHMAX Tours & Safaris.">
+    <meta name="keywords" content="TECHMAX Tours, Zanzibar tours, safari, adventure, excursions, booking">
+    <title>Tour Details - TECHMAX Tours & Safaris</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Swiper CSS for Image Slider -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;500&family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body { font-family: 'Open Sans', sans-serif; background: #FAFAFA; color: #212121; }
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; }
+        .btn-custom { font-family: 'Roboto', sans-serif; }
+        .hero { background: url('https://images.unsplash.com/photo-1575999080555-3f7a698dd8d9?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHphbnppYmFyfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600') no-repeat center center/cover; height: 50vh; display: flex; align-items: center; justify-content: center; color: white; text-align: center; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6); }
+        .hero-content { position: relative; z-index: 1; }
+        .btn-custom { background: transparent; border: 2px solid #FF7043; padding: 12px 30px; color: #FF7043; text-decoration: none; border-radius: 50px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; position: relative; overflow: hidden; display: inline-block; }
+        .btn-custom:hover { background: linear-gradient(45deg, #FF7043, #FFB74D); color: white; transform: translateY(-3px); box-shadow: 0 8px 25px rgba(255, 112, 67, 0.6); }
+        .swiper { width: 100%; height: 400px; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .swiper-slide img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .swiper-slide:hover img { transform: scale(1.05); }
+        .swiper-pagination { bottom: 10px; }
+        .swiper-button-next, .swiper-button-prev { color: #FF7043; }
+        .tour-details { padding: 60px 0; background: #FFFFFF; }
+        .tour-details .card { border: none; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); padding: 30px; }
+        .tour-details h2 { color: #7CB342; margin-bottom: 20px; }
+        .tour-details p { margin-bottom: 15px; line-height: 1.6; }
+        .tour-details ul { list-style-type: disc; padding-left: 20px; margin-bottom: 15px; }
+        .price { font-size: 1.5rem; font-weight: bold; color: #FF7043; }
+        footer { background: #212121; color: white; padding: 40px 0; }
+        .newsletter input { border-radius: 25px; border: none; padding: 10px 20px; }
+        .newsletter .btn-custom { border-radius: 25px; }
+        /* Related Tours */
+        .related-tours { padding: 60px 0; background: #F1F8E9; }
+        .related-tours h2 { text-align: center; margin-bottom: 40px; color: #7CB342; }
+        .related-tours-container { display: flex; overflow-x: auto; gap: 20px; padding: 20px 0; scrollbar-width: thin; scrollbar-color: #FF7043 #F1F8E9; }
+        .related-tours-container::-webkit-scrollbar { height: 8px; }
+        .related-tours-container::-webkit-scrollbar-track { background: #F1F8E9; }
+        .related-tours-container::-webkit-scrollbar-thumb { background: #FF7043; border-radius: 4px; }
+        .related-tour-card { min-width: 300px; border: none; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease; overflow: hidden; }
+        .related-tour-card:hover { transform: translateY(-10px); }
+        .related-tour-card img { height: 200px; object-fit: cover; }
+        .related-tour-card .card-body { padding: 15px; }
+        .related-tour-card .card-title { color: #7CB342; font-size: 1.1rem; }
+        .no-related-tours { display: flex; justify-content: center; align-items: center; width: 100%; min-height: 200px; }
+        .no-tours-animation { text-align: center; color: #7CB342; animation: fadeIn 1s ease-in-out; }
+        .no-tours-animation i { margin-bottom: 15px; opacity: 0.7; }
+        .no-tours-animation p { font-size: 1.1rem; margin: 0; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        /* Responsive */
+        @media (max-width: 768px) { .hero { height: 40vh; } .swiper { height: 300px; } .related-tour-card { min-width: 250px; } }
+        /* Smooth scroll */
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+        <a class="navbar-brand fw-bold text-primary" href="#">
+            <img src="images/logo.jpg" alt="TechmaxTours Logo" style="height: 40px; margin-right: 10px; border: 1px solid #FF7043; border-radius: 8px; box-shadow: 0 4px 8px rgba(255, 112, 67, 0.3); transition: transform 0.3s ease;">
+            TechmaxTours
+        </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="tour.html">Tours</a></li>
+                    <li class="nav-item"><a class="nav-link" href="car-rental.html">Car Rental</a></li>
+                    <li class="nav-item"><a class="nav-link" href="package.html">Packages</a></li>
+                    <li class="nav-item"><a class="nav-link" href="excursion.html">Excursions</a></li>
+                    <li class="nav-item"><a class="nav-link" href="planner.html">Planner</a></li>
+                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="fag.html">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 id="tourTitleHero">Tour Details</h1>
+            <p id="tourSubdescriptionHero">Explore in-depth information about this amazing tour.</p>
+        </div>
+    </section>
+
+    <!-- Tour Details Section -->
+    <section class="tour-details">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card">
+                        <h2 id="tourTitle"></h2>
+                        <p id="tourDescription"></p>
+                        <p id="tourSubdescription"></p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4>Highlights</h4>
+                                <ul id="tourHighlights"></ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h4>Itinerary</h4>
+                                <ul id="tourItinerary"></ul>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4>Inclusions</h4>
+                                <ul id="tourInclusions"></ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h4>Exclusions</h4>
+                                <ul id="tourExclusions"></ul>
+                            </div>
+                        </div>
+                        <p class="price" id="tourPrice"></p>
+                        <a href="booking-form.html" class="btn-custom">Book This Tour</a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card">
+                        <h4>Gallery</h4>
+                        <div class="swiper tourSwiper">
+                            <div class="swiper-wrapper" id="tourGalleryWrapper">
+                                <!-- Images will be populated here -->
+                            </div>
+                            <div class="swiper-pagination"></div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Tours Section -->
+    <section class="related-tours">
+        <div class="container">
+            <h2>Related Tours</h2>
+            <div class="related-tours-container" id="relatedToursContainer">
+                <!-- Related tours will be populated here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+<footer class="bg-dark text-white py-5">
+    <div class="container">
+        <div class="row">
+            <!-- Company Info -->
+            <div class="col-lg-3 mb-4">
+                <h5 class="fw-bold text-primary mb-3">TechmaxTours</h5>
+                <p>Your gateway to unforgettable adventures in Zanzibar. Explore culture, beaches, and wildlife with us.</p>
+                <div class="social-links mt-3">
+                    <a href="https://facebook.com/zanzibartours" target="_blank" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com/zanzibartours" target="_blank" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com/zanzibartours" target="_blank" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                    <a href="https://linkedin.com/company/zanzibartours" target="_blank" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <!-- Quick Links -->
+            <div class="col-lg-3 mb-4">
+                <h5 class="fw-bold mb-3">Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li><a href="index.html" class="text-white text-decoration-none">Home</a></li>
+                    <li><a href="tour.html" class="text-white text-decoration-none">Tours</a></li>
+                    <li><a href="car-rental.html" class="text-white text-decoration-none">Car Rental</a></li>
+                    <li><a href="package.html" class="text-white text-decoration-none">Packages</a></li>
+                    <li><a href="excursion.html" class="text-white text-decoration-none">Excursions</a></li>
+                    <li><a href="gallery.html" class="text-white text-decoration-none">Gallery</a></li>
+                    <li><a href="blog.html" class="text-white text-decoration-none">Blog</a></li>
+                    <li><a href="contact.html" class="text-white text-decoration-none">Contact</a></li>
+                    <li><a href="policy.html" class="text-white text-decoration-none">Policy</a></li>
+                </ul>
+            </div>
+            <!-- Contact Info -->
+            <div class="col-lg-3 mb-4">
+                <h5 class="fw-bold mb-3">Contact Info</h5>
+                <p><i class="fas fa-phone me-2"></i> +255 745 734 455</p>
+                <p><i class="fas fa-envelope me-2"></i> info@techmaxtoursandsafaris.com</p>
+                <p><i class="fas fa-map-marker-alt me-2"></i> kilimani, Zanzibar, Tanzania</p>
+                <p><i class="fas fa-clock me-2"></i> Mon - Sun: 24h</p>
+            </div>
+            <!-- Newsletter -->
+            <div class="col-lg-3 mb-4">
+                <h5 class="fw-bold mb-3">Newsletter</h5>
+                <p>Subscribe to get the latest updates on tours and special offers.</p>
+                <form id="newsletterForm" class="d-flex flex-column">
+                    <input type="email" class="form-control mb-2" id="newsletterEmail" placeholder="Enter your email" required>
+                    <button type="submit" class="btn btn-custom">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <hr class="my-4">
+        <div class="text-center">
+            <p class="text-lg mb-4">&copy; 2025 techmaxtoursandsafaris. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- Tours Data -->
+    <script src="tour.js"></script>
+    <!-- Custom JS -->
+    <script>
+        // Get tour index from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const tourIndex = parseInt(urlParams.get('index'));
+
+        if (tourIndex !== null && tours[tourIndex]) {
+            const tour = tours[tourIndex];
+
+            // Populate hero
+            document.getElementById('tourTitleHero').textContent = tour.title;
+            document.getElementById('tourSubdescriptionHero').textContent = tour.subdescription;
+
+            // Populate details
+            document.getElementById('tourTitle').textContent = tour.title;
+            document.getElementById('tourDescription').textContent = tour.description;
+            document.getElementById('tourSubdescription').textContent = tour.subdescription;
+            document.getElementById('tourPrice').textContent = tour.price;
+
+            // Highlights
+            const highlightsUl = document.getElementById('tourHighlights');
+            tour.highlights.forEach(h => {
+                const li = document.createElement('li');
+                li.textContent = h;
+                highlightsUl.appendChild(li);
+            });
+
+            // Itinerary
+            const itineraryUl = document.getElementById('tourItinerary');
+            tour.itinerary.forEach(i => {
+                const li = document.createElement('li');
+                li.textContent = i;
+                itineraryUl.appendChild(li);
+            });
+
+            // Inclusions
+            const inclusionsUl = document.getElementById('tourInclusions');
+            tour.inclusions.forEach(i => {
+                const li = document.createElement('li');
+                li.textContent = i;
+                inclusionsUl.appendChild(li);
+            });
+
+            // Exclusions
+            const exclusionsUl = document.getElementById('tourExclusions');
+            tour.exclusions.forEach(e => {
+                const li = document.createElement('li');
+                li.textContent = e;
+                exclusionsUl.appendChild(li);
+            });
+
+            // Gallery
+            const galleryWrapper = document.getElementById('tourGalleryWrapper');
+            tour.gallery.forEach(img => {
+                const slide = document.createElement('div');
+                slide.className = 'swiper-slide';
+                slide.innerHTML = `<img src="${img}" alt="${tour.title}">`;
+                galleryWrapper.appendChild(slide);
+            });
+
+            // Initialize Swiper
+            new Swiper('.tourSwiper', {
+                pagination: { el: '.swiper-pagination', clickable: true },
+                navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }
+            });
+        } else {
+            // Handle invalid index
+            document.querySelector('.tour-details').innerHTML = '<div class="container"><h2>Tour not found</h2><p>Please go back to the tours page.</p><a href="tour.html" class="btn-custom">Back to Tours</a></div>';
+        }
+
+        // Function to render related tours
+        function renderRelatedTours(currentTour) {
+            const container = document.getElementById('relatedToursContainer');
+            container.innerHTML = '';
+            const relatedTours = tours.filter(t => t.category === currentTour.category && t !== currentTour);
+            if (relatedTours.length === 0) {
+                const noToursDiv = document.createElement('div');
+                noToursDiv.className = 'no-related-tours';
+                noToursDiv.innerHTML = `
+                    <div class="no-tours-animation">
+                        <i class="fas fa-search fa-3x"></i>
+                        <p>No related tours available in this category.</p>
+                    </div>
+                `;
+                container.appendChild(noToursDiv);
+            } else {
+                relatedTours.forEach(tour => {
+                    const tourCard = document.createElement('div');
+                    tourCard.className = 'related-tour-card card';
+                    tourCard.innerHTML = `
+                        <img src="${tour.image}" class="card-img-top" alt="${tour.title}">
+                        <div class="card-body">
+                            <h5 class="card-title">${tour.title}</h5>
+                            <p class="card-text">${tour.subdescription}</p>
+                            <p class="text-muted">${tour.price}</p>
+                            <a href="tour-detail.html?index=${tours.indexOf(tour)}" class="btn-custom">View Details</a>
+                        </div>
+                    `;
+                    container.appendChild(tourCard);
+                });
+            }
+        }
+
+        // Render related tours if tour is valid
+        if (tourIndex !== null && tours[tourIndex]) {
+            renderRelatedTours(tours[tourIndex]);
+        }
+    </script>
+</body>
+</html>

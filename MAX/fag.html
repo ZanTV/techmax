@@ -1,0 +1,433 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Frequently Asked Questions about TECHMAX Tours & Safaris in Zanzibar. Get answers to common queries about tours, bookings, and services.">
+    <meta name="keywords" content="TECHMAX Tours FAQ, Zanzibar tours FAQ, safari questions, booking help">
+    <title>FAQ - TECHMAX Tours & Safaris</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;500&family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body { font-family: 'Open Sans', sans-serif; background: #FAFAFA; color: #212121; }
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; }
+        .btn-custom { font-family: 'Roboto', sans-serif; }
+        .hero { background: url('https://images.unsplash.com/photo-1575999080555-3f7a698dd8d9?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHphbnppYmFyfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600') no-repeat center center/cover; height: 50vh; display: flex; align-items: center; justify-content: center; color: white; text-align: center; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6); animation: fadeIn 2s ease-in; }
+        .hero-content { position: relative; z-index: 1; animation: slideUp 1s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .btn-custom { position: relative; overflow: hidden; }
+        .btn-custom::after { content: ''; position: absolute; top: 50%; left: 50%; width: 0; height: 0; background: rgba(255,255,255,0.3); border-radius: 50%; transform: translate(-50%, -50%); transition: width 0.6s, height 0.6s; }
+        .btn-custom:hover::after { width: 300px; height: 300px; }
+        .btn-custom { background: transparent; border: 2px solid #FF7043; padding: 12px 30px; color: #FF7043; text-decoration: none; border-radius: 50px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; box-shadow: none; transition: all 0.3s ease; position: relative; overflow: hidden; display: inline-block; }
+        .btn-custom::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(45deg, #FF7043, #FFB74D); transition: left 0.3s; z-index: -1; }
+        .btn-custom:hover { background: linear-gradient(45deg, #FF7043, #FFB74D); color: white; transform: translateY(-3px); box-shadow: 0 8px 25px rgba(255, 112, 67, 0.6); }
+        .btn-custom:hover::before { left: 0; }
+        .faq-section { padding: 60px 0; background: #FFFFFF; }
+        .faq-card { background: #FFFFFF; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); margin-bottom: 20px; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .faq-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .faq-question { background: linear-gradient(45deg, #7CB342, #8BC34A); color: white; padding: 20px; margin: 0; cursor: pointer; font-size: 1.2rem; font-weight: 600; transition: background 0.3s ease; }
+        .faq-question:hover { background: linear-gradient(45deg, #8BC34A, #9CCC65); }
+        .faq-answer { padding: 20px; background: #F8F9FA; color: #34495E; line-height: 1.6; display: none; }
+        .faq-answer.show { display: block; }
+        .faq-icon { float: right; transition: transform 0.3s ease; }
+        .faq-question.active .faq-icon { transform: rotate(180deg); }
+        .contact-section { padding: 60px 0; background: #F1F8E9; text-align: center; }
+        .contact-section h2 { color: #7CB342; margin-bottom: 20px; }
+        .contact-section p { font-size: 1.1rem; line-height: 1.6; max-width: 600px; margin: 0 auto 30px; }
+        footer { background: #212121; color: white; padding: 40px 0; }
+        .newsletter input { border-radius: 25px; border: none; padding: 10px 20px; }
+        .newsletter .btn-custom { border-radius: 25px; }
+        /* Scroll-Up Button Styles */
+        .scroll-up-btn {
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          width: 56px;
+          height: 56px;
+          background: rgba(255, 255, 255, 0.15);
+          backdrop-filter: blur(35px);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity 0.4s ease, transform 0.3s ease;
+          box-shadow: 0 0 8px rgba(255, 107, 53, 0.35), 0 0 20px rgba(255, 107, 53, 0.4) inset;
+          z-index: 1000;
+          border: 1.5px solid rgba(255, 107, 53, 0.35);
+          animation: pulseGlow 3s infinite alternate;
+          backdrop-filter: saturate(1.2) blur(15px);
+          -webkit-backdrop-filter: saturate(1.2) blur(15px);
+          -moz-backdrop-filter: saturate(1.2) blur(15px);
+          -o-backdrop-filter: saturate(1.2) blur(15px);
+        }
+        .scroll-up-btn.show {
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(0);
+        }
+        .scroll-up-btn:hover {
+          transform: translateY(-5px) scale(1.12);
+          box-shadow: 0 0 18px rgba(255, 107, 53, 0.6), 0 0 38px rgba(255, 107, 53, 0.7) inset;
+          animation-play-state: paused;
+        }
+        @keyframes pulseGlow {
+          0% {
+            box-shadow: 0 0 8px rgba(255, 107, 53, 0.35), 0 0 20px rgba(255, 107, 53, 0.4) inset;
+          }
+          100% {
+            box-shadow: 0 0 18px rgba(255, 107, 53, 0.6), 0 0 38px rgba(255, 107, 53, 0.7) inset;
+          }
+        }
+        .scroll-icon {
+          color: #ff6b35;
+          font-size: 26px;
+          transition: transform 0.3s ease, color 0.3s ease;
+        }
+        .scroll-up-btn:hover .scroll-icon {
+          transform: translateY(-4px);
+          color: #f7931e;
+        }
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .scroll-up-btn {
+                width: 45px;
+                height: 45px;
+                bottom: 15px;
+                right: 15px;
+            }
+            .scroll-icon {
+                font-size: 20px;
+            }
+            .hero { height: 40vh; }
+            .faq-card { margin-bottom: 15px; }
+            .faq-question { font-size: 1rem; padding: 15px; }
+            .faq-answer { padding: 15px; }
+        }
+        /* Smooth scroll */
+        html { scroll-behavior: smooth; }
+
+        /* Custom FAQ Accordion Styles */
+        .faq-section h3 { color: #7CB342; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+        .faq-section h3 i { margin-right: 10px; color: #FF7043; }
+        .accordion-button { background: linear-gradient(45deg, #7CB342, #8BC34A) !important; color: white !important; font-weight: 600; border: none; border-radius: 10px !important; box-shadow: 0 2px 10px rgba(124, 179, 66, 0.3); transition: all 0.3s ease; }
+        .accordion-button:hover { background: linear-gradient(45deg, #8BC34A, #9CCC65) !important; transform: translateY(-2px); box-shadow: 0 4px 20px rgba(124, 179, 66, 0.5); }
+        .accordion-button:not(.collapsed) { background: linear-gradient(45deg, #FF7043, #FFB74D) !important; color: white !important; box-shadow: 0 4px 15px rgba(255, 112, 67, 0.4); }
+        .accordion-button:focus { box-shadow: 0 0 0 0.2rem rgba(124, 179, 66, 0.25); }
+        .accordion-body { background: #F8F9FA; color: #34495E; border-radius: 0 0 10px 10px; border: 1px solid #e9ecef; border-top: none; }
+        .accordion-item { border: none; border-radius: 10px; overflow: hidden; margin-bottom: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); transition: transform 0.3s ease; }
+        .accordion-item:hover { transform: translateY(-3px); box-shadow: 0 5px 20px rgba(0,0,0,0.15); }
+        .search-bar input { border-radius: 25px; border: 2px solid #FF7043; padding: 10px 20px; font-size: 1rem; transition: all 0.3s ease; }
+        .search-bar input:focus { border-color: #7CB342; box-shadow: 0 0 10px rgba(124, 179, 66, 0.3); outline: none; }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+        <a class="navbar-brand fw-bold text-primary" href="#">
+            <img src="images/logo.jpg" alt="TechmaxTours Logo" style="height: 40px; margin-right: 10px; border: 1px solid #FF7043; border-radius: 8px; box-shadow: 0 4px 8px rgba(255, 112, 67, 0.3); transition: transform 0.3s ease;">
+            TechmaxTours
+        </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="tour.html">Tours</a></li>
+                    <li class="nav-item"><a class="nav-link" href="car-rental.html">Car Rental</a></li>
+                    <li class="nav-item"><a class="nav-link" href="package.html">Packages</a></li>
+                    <li class="nav-item"><a class="nav-link" href="excursion.html">Excursions</a></li>
+                    <li class="nav-item"><a class="nav-link" href="planner.html">Planner</a></li>
+                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="fag.html">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+   <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="display-4 fw-bold">Frequently Asked Questions</h1>
+            <p class="lead">Find answers to common questions about our Zanzibar tours and services.</p>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+<section class="container my-5">
+    <div class="search-bar mb-4">
+        <input type="text" id="faqSearch" placeholder="Search FAQs..." class="form-control">
+    </div>
+
+    <!-- Booking Category -->
+    <h3 class="text-center mb-4"><i class="fas fa-calendar-check"></i> Booking</h3>
+    <div class="accordion" id="bookingAccordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#booking1" aria-expanded="true" aria-controls="booking1">
+                    How do I book a tour with TechMax Tours?
+                </button>
+            </h2>
+            <div id="booking1" class="accordion-collapse collapse show" data-bs-parent="#bookingAccordion">
+                <div class="accordion-body">
+                    Booking is simple! Visit our website, choose your preferred tour, and fill out the booking form. You can also contact us directly via email or phone for personalized assistance.
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#booking2" aria-expanded="false" aria-controls="booking2">
+                    What details do I need to provide when booking?
+                </button>
+            </h2>
+            <div id="booking2" class="accordion-collapse collapse" data-bs-parent="#bookingAccordion">
+                <div class="accordion-body">
+                    Please provide your full name, email, phone number, number of participants, preferred travel dates, and any special requests or requirements.
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#booking3" aria-expanded="false" aria-controls="booking3">
+                    Can I book tours for a group?
+                </button>
+            </h2>
+            <div id="booking3" class="accordion-collapse collapse" data-bs-parent="#bookingAccordion">
+                <div class="accordion-body">
+                    Absolutely! We welcome group bookings and can create custom packages. Groups of 5 or more may enjoy special discounts. Contact us to plan your group adventure.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payments Category -->
+    <h3 class="text-center mb-4 mt-5"><i class="fas fa-credit-card"></i> Payments</h3>
+    <div class="accordion" id="paymentsAccordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#payments1" aria-expanded="false" aria-controls="payments1">
+                    What payment methods are accepted?
+                </button>
+            </h2>
+            <div id="payments1" class="accordion-collapse collapse" data-bs-parent="#paymentsAccordion">
+                <div class="accordion-body">
+                    We accept Visa, MasterCard, PayPal, bank transfers, and M-Pesa for local payments. All transactions are secured for your peace of mind.
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#payments2" aria-expanded="false" aria-controls="payments2">
+                    Is a deposit required to confirm a booking?
+                </button>
+            </h2>
+            <div id="payments2" class="accordion-collapse collapse" data-bs-parent="#paymentsAccordion">
+                <div class="accordion-body">
+                    Yes, a 50% deposit secures your booking. The remaining balance is due before or upon arrival.
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#payments3" aria-expanded="false" aria-controls="payments3">
+                    Are payments safe and secure?
+                </button>
+            </h2>
+            <div id="payments3" class="accordion-collapse collapse" data-bs-parent="#paymentsAccordion">
+                <div class="accordion-body">
+                    Definitely. All payments are processed through SSL-secured gateways to ensure your information is completely safe.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cancellations Category -->
+    <h3 class="text-center mb-4 mt-5"><i class="fas fa-times-circle"></i> Cancellations & Rescheduling</h3>
+    <div class="accordion" id="cancellationsAccordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cancellations1" aria-expanded="false" aria-controls="cancellations1">
+                    What is your cancellation policy?
+                </button>
+            </h2>
+            <div id="cancellations1" class="accordion-collapse collapse" data-bs-parent="#cancellationsAccordion">
+                <div class="accordion-body">
+                    Cancellations made 30 days or more before the tour date receive a full refund. Between 14–29 days, a 50% refund applies. Less than 14 days, unfortunately, no refund is possible.
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cancellations2" aria-expanded="false" aria-controls="cancellations2">
+                    Can I reschedule my tour?
+                </button>
+            </h2>
+            <div id="cancellations2" class="accordion-collapse collapse" data-bs-parent="#cancellationsAccordion">
+                <div class="accordion-body">
+                    Yes! Tours can be rescheduled up to 14 days before departure, subject to a small rescheduling fee. Contact us to arrange.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Travel Info Category -->
+    <h3 class="text-center mb-4 mt-5"><i class="fas fa-plane"></i> Travel Information</h3>
+    <div class="accordion" id="travelAccordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#travel1" aria-expanded="false" aria-controls="travel1">
+                    What should I bring on my tour?
+                </button>
+            </h2>
+            <div id="travel1" class="accordion-collapse collapse" data-bs-parent="#travelAccordion">
+                <div class="accordion-body">
+                    Bring comfortable clothing, sun protection (hat & sunscreen), water, personal medications, and suitable footwear. For beach activities, include swimwear and towels.
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#travel2" aria-expanded="false" aria-controls="travel2">
+                    Is Zanzibar safe for tourists?
+                </button>
+            </h2>
+            <div id="travel2" class="accordion-collapse collapse" data-bs-parent="#travelAccordion">
+                <div class="accordion-body">
+                    Zanzibar is generally safe. Stick to tourist-friendly areas, use registered taxis, and follow local guidance for a worry-free experience.
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#travel3" aria-expanded="false" aria-controls="travel3">
+                    When is the best time to visit Zanzibar?
+                </button>
+            </h2>
+            <div id="travel3" class="accordion-collapse collapse" data-bs-parent="#travelAccordion">
+                <div class="accordion-body">
+                    The ideal period is June to October (dry season) for sunny weather and fewer crowds. Avoid April–May, which is the rainy season.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Footer -->
+<footer class="bg-dark text-white py-5">
+    <div class="container">
+        <div class="row">
+            <!-- Company Info -->
+            <div class="col-lg-3 mb-4">
+                <h5 class="fw-bold text-primary mb-3">TechmaxTours</h5>
+                <p>Your gateway to unforgettable adventures in Zanzibar. Explore culture, beaches, and wildlife with us.</p>
+                <div class="social-links mt-3">
+                    <a href="https://facebook.com/zanzibartours" target="_blank" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com/zanzibartours" target="_blank" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com/zanzibartours" target="_blank" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                    <a href="https://linkedin.com/company/zanzibartours" target="_blank" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <!-- Quick Links -->
+            <div class="col-lg-3 mb-4">
+                <h5 class="fw-bold mb-3">Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li><a href="index.html" class="text-white text-decoration-none">Home</a></li>
+                    <li><a href="tour.html" class="text-white text-decoration-none">Tours</a></li>
+                    <li><a href="car-rental.html" class="text-white text-decoration-none">Car Rental</a></li>
+                    <li><a href="package.html" class="text-white text-decoration-none">Packages</a></li>
+                    <li><a href="excursion.html" class="text-white text-decoration-none">Excursions</a></li>
+                    <li><a href="gallery.html" class="text-white text-decoration-none">Gallery</a></li>
+                    <li><a href="blog.html" class="text-white text-decoration-none">Blog</a></li>
+                    <li><a href="contact.html" class="text-white text-decoration-none">Contact</a></li>
+                    <li><a href="policy.html" class="text-white text-decoration-none">Policy</a></li>
+                </ul>
+            </div>
+            <!-- Contact Info -->
+            <div class="col-lg-3 mb-4">
+                <h5 class="fw-bold mb-3">Contact Info</h5>
+                <p><i class="fas fa-phone me-2"></i> +255 745 734 455</p>
+                <p><i class="fas fa-envelope me-2"></i> info@techmaxtoursandsafaris.com</p>
+                <p><i class="fas fa-map-marker-alt me-2"></i> kilimani, Zanzibar, Tanzania</p>
+                <p><i class="fas fa-clock me-2"></i> Mon - Sun: 24h</p>
+            </div>
+            <!-- Newsletter -->
+            <div class="col-lg-3 mb-4">
+                <h5 class="fw-bold mb-3">Newsletter</h5>
+                <p>Subscribe to get the latest updates on tours and special offers.</p>
+                <form id="newsletterForm" class="d-flex flex-column">
+                    <input type="email" class="form-control mb-2" id="newsletterEmail" placeholder="Enter your email" required>
+                    <button type="submit" class="btn btn-custom">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <hr class="my-4">
+        <div class="text-center">
+            <p class="text-lg mb-4">&copy; 2025 techmaxtoursandsafaris. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Custom CSS for Footer (Add to <style> tag) -->
+<style>
+    footer { background: linear-gradient(135deg, #333 0%, #555 100%); position: relative; }
+    footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 107, 53, 0.1); pointer-events: none; }
+    footer .social-links a { transition: color 0.3s ease, transform 0.3s ease; }
+    footer .social-links a:hover { color: #ff6b35 !important; transform: scale(1.2); }
+    footer a:hover { color: #f7931e !important; }
+    footer .form-control { border-radius: 25px; border: 2px solid #ff6b35; background: transparent; color: white; }
+    footer .form-control::placeholder { color: #ccc; }
+    footer .form-control:focus { border-color: #f7931e; box-shadow: 0 0 10px rgba(255, 107, 53, 0.3); }
+    footer .btn-custom { background: linear-gradient(45deg, #ff6b35, #f7931e); border: none; padding: 8px 20px; color: white; border-radius: 25px; font-weight: bold; text-transform: uppercase; transition: all 0.3s ease; }
+    footer .btn-custom:hover { background: white; color: black; transform: translateY(-2px); box-shadow: 0 4px 15px rgba(255, 107, 53, 0.6); }
+    /* Responsive */
+    @media (max-width: 768px) { footer .col-lg-3 { text-align: center; margin-bottom: 20px; } footer .d-flex { flex-direction: column; } }
+</style>
+</body>
+<!-- Custom JS for Newsletter (Add before closing) -->
+<script>
+    document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = document.getElementById('newsletterEmail').value;
+        if (email) {
+            alert('Thank you for subscribing! We will send updates to ' + email);
+            this.reset();
+        }
+    });
+</script>
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script>
+        $(document).ready(function() {
+            // Search functionality
+            $('#faqSearch').on('keyup', function() {
+                const value = $(this).val().toLowerCase();
+                $('.accordion-item').filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+

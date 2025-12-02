@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Book your adventure with TECHMAX Tours & Safaris - Tours, Car Rentals, Packages, and Excursions in Zanzibar.">
+    <meta name="keywords" content="TECHMAX Tours, Zanzibar booking, safari booking, adventure booking, tour reservation">
+    <title>Booking Form - TECHMAX Tours & Safaris</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;500&family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body { font-family: 'Open Sans', sans-serif; background: #ffffff; min-height: 100vh; color: #212121; }
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; }
+        .hero { background: url('https://images.unsplash.com/photo-1575999080555-3f7a698dd8d9?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHphbnppYmFyfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600') no-repeat center center/cover; height: 100vh; display: flex; align-items: center; justify-content: center; color: white; text-align: center; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6); animation: fadeIn 2s ease-in; }
+        .hero-content { position: relative; z-index: 1; animation: slideUp 1s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .hero h1, .hero p { transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out; }
+        .hero.fade-out h1, .hero.fade-out p { opacity: 0; transform: translateY(-20px); }
+        .hero.fade-in h1, .hero.fade-in p { opacity: 1; transform: translateY(0); }
+        .cta-buttons { animation: bounceIn 1.5s ease-out 0.5s both; }
+        @keyframes bounceIn { 0% { opacity: 0; transform: scale(0.3); } 50% { opacity: 1; transform: scale(1.05); } 70% { transform: scale(0.9); } 100% { opacity: 1; transform: scale(1); } }
+        .btn-custom { font-family: 'Roboto', sans-serif; background: linear-gradient(45deg, #FF7043, #FFB74D); border: 1px solid #FF7043; padding: 12px 30px; color: white; text-decoration: none; border-radius: 50px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; display: inline-block; position: relative; overflow: hidden; box-shadow: 0 4px 15px rgba(255, 112, 67, 0.4); }
+        .btn-custom::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(45deg, #FFB74D, #FF8A65); transition: left 0.3s; z-index: -1; }
+        .btn-custom:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(255, 112, 67, 0.6); }
+        .btn-custom:hover::before { left: 0; }
+        .btn-custom:active { transform: translateY(-1px); box-shadow: 0 2px 10px rgba(255, 112, 67, 0.4); }
+        .booking-container { background: white; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.1); overflow: hidden; margin: 50px auto; max-width: 800px; }
+        .booking-header { background: linear-gradient(45deg, #7CB342, #8BC34A); color: white; padding: 40px 0; text-align: center; }
+        .step-indicator { display: flex; justify-content: center; padding: 20px; background: #F1F8E9; }
+        .step { width: 40px; height: 40px; border-radius: 50%; background: #E0E0E0; display: flex; align-items: center; justify-content: center; margin: 0 10px; transition: all 0.3s ease; }
+        .step.active { background: #7CB342; color: white; }
+        .step.completed { background: #4CAF50; color: white; }
+        .form-step { display: none; padding: 40px; }
+        .form-step.active { display: block; }
+        .service-card { border: 2px solid #E0E0E0; border-radius: 15px; padding: 20px; margin: 10px; cursor: pointer; transition: all 0.3s ease; text-align: center; }
+        .service-card:hover, .service-card.selected { border-color: #7CB342; background: #F1F8E9; }
+        .item-card { border: 1px solid #E0E0E0; border-radius: 10px; padding: 15px; margin: 10px 0; cursor: pointer; transition: all 0.3s ease; }
+        .item-card:hover, .item-card.selected { border-color: #7CB342; background: #F1F8E9; }
+        .item-card img { width: 100%; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 10px; }
+        .form-group { margin-bottom: 20px; }
+        .form-control { border-radius: 10px; border: 2px solid #E0E0E0; padding: 12px; transition: border-color 0.3s ease; }
+        .form-control:focus { border-color: #7CB342; box-shadow: none; }
+        .btn-nav { background: #E0E0E0; color: #666; border: none; padding: 10px 20px; border-radius: 25px; margin: 0 10px; transition: all 0.3s ease; }
+        .btn-nav:hover { background: #7CB342; color: white; }
+        .summary { background: #F1F8E9; padding: 20px; border-radius: 10px; margin-bottom: 20px; }
+        /* Autocomplete styles */
+        .autocomplete-results { position: absolute; background: white; border: 1px solid #E0E0E0; border-top: none; border-radius: 0 0 10px 10px; max-height: 200px; overflow-y: auto; width: 100%; z-index: 1000; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .autocomplete-item { padding: 10px; cursor: pointer; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center; }
+        .autocomplete-item:hover, .autocomplete-item.active { background: #F1F8E9; }
+        .autocomplete-item:last-child { border-bottom: none; }
+        .autocomplete-item img { width: 50px; height: 50px; object-fit: cover; border-radius: 5px; margin-right: 10px; }
+        .autocomplete-item .item-text { flex: 1; }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .booking-container { margin: 20px; }
+            .step-indicator { flex-wrap: wrap; }
+            .service-card { margin: 5px; }
+            .hero { height: 80vh; }
+            .step4-buttons { display: flex; flex-direction: column; gap: 10px; align-items: center; }
+            .step4-buttons .btn { width: 100%; max-width: 300px; }
+            .step4-buttons .btn-outline-danger { margin-right: 0; margin-bottom: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary" href="#">
+                <img src="images/logo.jpg" alt="TechmaxTours Logo" style="height: 40px; margin-right: 10px; border: 1px solid #FF7043; border-radius: 8px; box-shadow: 0 4px 8px rgba(255, 112, 67, 0.3); transition: transform 0.3s ease;">
+                TechmaxTours
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="tour.html">Tours</a></li>
+                    <li class="nav-item"><a class="nav-link" href="car-rental.html">Car Rental</a></li>
+                    <li class="nav-item"><a class="nav-link" href="package.html">Packages</a></li>
+                    <li class="nav-item"><a class="nav-link" href="excursion.html">Excursions</a></li>
+                    <li class="nav-item"><a class="nav-link" href="planner.html">Planner</a></li>
+                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="fag.html">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 id="hero-title" class="display-4 fw-bold">Book Your Zanzibar Adventure</h1>
+            <p id="hero-subtitle" class="lead">Reserve tours, car rentals, packages, and excursions for an unforgettable experience.</p>
+            <div class="mt-4 service-icons">
+                <i class="fas fa-hiking fa-3x text-white me-4" title="Tours"></i>
+                <i class="fas fa-car fa-3x text-white me-4" title="Car Rental"></i>
+                <i class="fas fa-suitcase fa-3x text-white me-4" title="Packages"></i>
+                <i class="fas fa-umbrella-beach fa-3x text-white" title="Excursions"></i>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="booking-container">
+            <div class="booking-header">
+                <h1>Book Your Adventure</h1>
+                <p>Reserve tours, car rentals, packages, and excursions in Zanzibar</p>
+            </div>
+
+            <div class="step-indicator">
+                <div class="step active" data-step="1">1</div>
+                <div class="step" data-step="2">2</div>
+                <div class="step" data-step="3">3</div>
+                <div class="step" data-step="4">4</div>
+            </div>
+
+            <!-- Step 1: Select Service Type -->
+            <div class="form-step active" id="step1">
+                <h3 class="text-center mb-4">What would you like to book?</h3>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="service-card" data-service="tour">
+                            <i class="fas fa-hiking fa-3x text-primary mb-3"></i>
+                            <h5>Tours</h5>
+                            <p>Explore Zanzibar's natural wonders</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="service-card" data-service="car">
+                            <i class="fas fa-car fa-3x text-primary mb-3"></i>
+                            <h5>Car Rental</h5>
+                            <p>Rent vehicles for your adventure</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="service-card" data-service="package">
+                            <i class="fas fa-suitcase fa-3x text-primary mb-3"></i>
+                            <h5>Packages</h5>
+                            <p>Complete travel packages</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="service-card" data-service="excursion">
+                            <i class="fas fa-umbrella-beach fa-3x text-primary mb-3"></i>
+                            <h5>Excursions</h5>
+                            <p>Short trips and activities</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <button class="btn-custom" id="nextStep1">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 2: Select Specific Item -->
+            <div class="form-step" id="step2">
+                <h3 class="text-center mb-4">Choose your <span id="serviceTypeText"></span></h3>
+                <div class="form-group mb-4">
+                    <input type="text" class="form-control" id="itemSearch" placeholder="Search for items..." autocomplete="off">
+                    <div id="autocomplete-results" class="autocomplete-results"></div>
+                </div>
+                <div id="itemsContainer" class="row">
+                    <!-- Items will be populated here -->
+                </div>
+                <div class="text-center mt-4">
+                    <button class="btn-nav" id="prevStep2">Previous</button>
+                    <button class="btn-custom" id="nextStep2">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Personal Details -->
+            <div class="form-step" id="step3">
+                <h3 class="text-center mb-4">Your Details</h3>
+                <form id="personalForm">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" class="form-control" id="firstName" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" class="form-control" id="lastName" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" class="form-control" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" class="form-control" id="phone" required>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="checkIn">Check-in Date *</label>
+                                <input type="date" class="form-control" id="checkIn" required min="">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="checkOut">Check-out Date *</label>
+                                <input type="date" class="form-control" id="checkOut" required min="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="guests">Number of Guests *</label>
+                        <input type="number" class="form-control" id="guests" min="1" required>
+                    </div>
+                    <div class="form-group" id="pickupLocationGroup" style="display: none;">
+                        <label for="pickupLocation">Pick-up Location</label>
+                        <select class="form-control" id="pickupLocation">
+                            <option value="Kilimani">Kilimani - R6C3+QFQ, Zanzibar</option>
+                        </select>
+                        <small class="form-text text-muted">
+                            Don't know the location? <a href="https://www.google.com/maps/dir/?api=1&destination=R6C3+QFQ,+Zanzibar" target="_blank">View Pick-up Location</a>
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="specialRequests">Special Requests</label>
+                        <textarea class="form-control" id="specialRequests" rows="3"></textarea>
+                    </div>
+                     <div class="form-check mt-3">
+                    <input class="form-check-input" type="checkbox" id="acceptPolicy" required>
+                    <label class="form-check-label" for="acceptPolicy">
+                        I accept the <a href="policy.html" target="_blank">terms and conditions</a>
+                    </label>
+                </div>
+                </form>
+                <div class="text-center mt-4">
+                    <button class="btn-nav" id="prevStep3">Previous</button>
+                    <button class="btn-custom" id="nextStep3">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 4: Confirmation -->
+            <div class="form-step" id="step4">
+                <h3 class="text-center mb-4">Confirm Your Booking</h3>
+                <div class="summary" id="bookingSummary">
+                    <!-- Summary will be populated here -->
+                </div>
+               
+                <div class="text-center step4-buttons">
+                    <button class="btn-nav" id="prevStep4">Previous</button>
+                    <button class="btn btn-outline-danger me-2 px-4 py-2 fw-bold" id="cancelBooking">Cancel Booking</button>
+                    <button class="btn-custom" id="submitBooking">Confirm Booking</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="successModalLabel">
+                        <i class="fas fa-check-circle me-2"></i>Booking Successful!
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <i class="fas fa-check-circle fa-4x text-success mb-3"></i>
+                    <h4>Thank you for your booking!</h4>
+                    <p class="mb-3">Your booking has been submitted successfully. We will contact you soon with pricing details and confirmation.</p>
+                    <p class="text-muted">You can close this window now.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cancel Confirmation Modal -->
+    <div class="modal fade" id="cancelModal" tabindex="-1" aria-labelledby="cancelModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-warning text-dark">
+                    <h5 class="modal-title" id="cancelModalLabel">
+                        <i class="fas fa-exclamation-triangle me-2"></i>Cancel Booking?
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <i class="fas fa-question-circle fa-4x text-warning mb-3"></i>
+                    <h4>Are you sure you want to cancel?</h4>
+                    <p class="mb-3">This will clear all your booking data and take you back to the beginning.</p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">No, Keep Booking</button>
+                    <button type="button" class="btn btn-danger" id="confirmCancel">Yes, Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Footer -->
+<footer class="bg-dark text-white py-5">
+    <div class="container">
+        <div class="row">
+            <!-- Company Info -->
+            <div class="col-lg-3 mb-4">
+                <h5 class="fw-bold text-primary mb-3">TechmaxTours</h5>
+                <p>Your gateway to unforgettable adventures in Zanzibar. Explore culture, beaches, and wildlife with us.</p>
+                <div class="social-links mt-3">
+                    <a href="https://facebook.com/zanzibartours" target="_blank" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com/zanzibartours" target="_blank" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com/zanzibartours" target="_blank" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                    <a href="https://linkedin.com/company/zanzibartours" target="_blank" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <!-- Quick Links -->
+            <div class="col-lg-3 mb-4">
+                <h5 class="fw-bold mb-3">Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li><a href="index.html" class="text-white text-decoration-none">Home</a></li>
+                    <li><a href="tour.html" class="text-white text-decoration-none">Tours</a></li>
+                    <li><a href="car-rental.html" class="text-white text-decoration-none">Car Rental</a></li>
+                    <li><a href="package.html" class="text-white text-decoration-none">Packages</a></li>
+                    <li><a href="excursion.html" class="text-white text-decoration-none">Excursions</a></li>
+                    <li><a href="gallery.html" class="text-white text-decoration-none">Gallery</a></li>
+                    <li><a href="blog.html" class="text-white text-decoration-none">Blog</a></li>
+                    <li><a href="contact.html" class="text-white text-decoration-none">Contact</a></li>
+                    <li><a href="policy.html" class="text-white text-decoration-none">Policy</a></li>
+                </ul>
+            </div>
+            <!-- Contact Info -->
+            <div class="col-lg-3 mb-4">
+                <h5 class="fw-bold mb-3">Contact Info</h5>
+                <p><i class="fas fa-phone me-2"></i> +255 745 734 455</p>
+                <p><i class="fas fa-envelope me-2"></i> info@techmaxtoursandsafaris.com</p>
+                <p><i class="fas fa-map-marker-alt me-2"></i> kilimani, Zanzibar, Tanzania</p>
+                <p><i class="fas fa-clock me-2"></i> Mon - Sun: 24h</p>
+            </div>
+            <!-- Newsletter -->
+            <div class="col-lg-3 mb-4">
+                <h5 class="fw-bold mb-3">Newsletter</h5>
+                <p>Subscribe to get the latest updates on tours and special offers.</p>
+                <form id="newsletterForm" class="d-flex flex-column">
+                    <input type="email" class="form-control mb-2" id="newsletterEmail" placeholder="Enter your email" required>
+                    <button type="submit" class="btn btn-custom">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <hr class="my-4">
+        <div class="text-center">
+            <p class="text-lg mb-4">&copy; 2025 techmaxtoursandsafaris. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Data Files -->
+    <script src="tour.js"></script>
+    <script src="car-rental.js"></script>
+    <script src="package.js"></script>
+    <script src="excursion.js"></script>
+    <!-- Custom JS -->
+    <script>
+        let currentStep = 1;
+        let selectedService = '';
+        let selectedItem = null;
+        let bookingData = {};
+
+        // Set minimum dates on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('checkIn').setAttribute('min', today);
+        });
+
+        // Update check-out min date when check-in changes
+        document.getElementById('checkIn').addEventListener('change', function() {
+            const checkInValue = this.value;
+            document.getElementById('checkOut').setAttribute('min', checkInValue);
+        });
+
+        // Step navigation
+        function showStep(step) {
+            document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.step').forEach(s => s.classList.remove('active', 'completed'));
+            document.getElementById(`step${step}`).classList.add('active');
+            for (let i = 1; i <= step; i++) {
+                document.querySelector(`.step[data-step="${i}"]`).classList.add(i === step ? 'active' : 'completed');
+            }
+            currentStep = step;
+        }
+
+        // Service selection
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('click', function() {
+                document.querySelectorAll('.service-card').forEach(c => c.classList.remove('selected'));
+                this.classList.add('selected');
+                selectedService = this.dataset.service;
+            });
+        });
+
+        // Next buttons
+        document.getElementById('nextStep1').addEventListener('click', function() {
+            if (!selectedService) {
+                alert('Please select a service type.');
+                return;
+            }
+            document.getElementById('serviceTypeText').textContent = selectedService.charAt(0).toUpperCase() + selectedService.slice(1);
+            populateItems();
+            showStep(2);
+        });
+
+        document.getElementById('nextStep2').addEventListener('click', function() {
+            if (!selectedItem) {
+                alert('Please select an item.');
+                return;
+            }
+            togglePickupLocation();
+            showStep(3);
+        });
+
+        document.getElementById('nextStep3').addEventListener('click', function() {
+            const form = document.getElementById('personalForm');
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            // Validate dates
+            const checkInDate = new Date(document.getElementById('checkIn').value);
+            const checkOutDate = new Date(document.getElementById('checkOut').value);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            if (checkInDate < today) {
+                alert('Check-in date must be today or in the future.');
+                return;
+            }
+
+            if (checkOutDate <= checkInDate) {
+                alert('Check-out date must be after the check-in date.');
+                return;
+            }
+
+            // Validate number of guests
+            const guests = parseInt(document.getElementById('guests').value);
+            if (guests < 1) {
+                alert('Number of guests must be at least 1.');
+                return;
+            }
+
+            bookingData = {
+                service: selectedService,
+                item: selectedItem,
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                checkIn: document.getElementById('checkIn').value,
+                checkOut: document.getElementById('checkOut').value,
+                guests: document.getElementById('guests').value,
+                pickupLocation: selectedService === 'car' ? document.getElementById('pickupLocation').value : null,
+                specialRequests: document.getElementById('specialRequests').value
+            };
+            populateSummary();
+            showStep(4);
+        });
+
+        // Previous buttons
+        document.getElementById('prevStep2').addEventListener('click', () => showStep(1));
+        document.getElementById('prevStep3').addEventListener('click', () => showStep(2));
+        document.getElementById('prevStep4').addEventListener('click', () => showStep(3));
+
+        // Toggle pick-up location visibility
+        function togglePickupLocation() {
+            const pickupGroup = document.getElementById('pickupLocationGroup');
+            if (selectedService === 'car') {
+                pickupGroup.style.display = 'block';
+            } else {
+                pickupGroup.style.display = 'none';
+            }
+        }
+
+        // Global variables for items
+        let allItems = [];
+        let displayedItems = [];
+
+        // Populate items based on selected service
+        function populateItems() {
+            const container = document.getElementById('itemsContainer');
+            container.innerHTML = '';
+            allItems = [];
+            switch (selectedService) {
+                case 'tour':
+                    allItems = tours || [];
+                    break;
+                case 'car':
+                    allItems = cars || [];
+                    break;
+                case 'package':
+                    allItems = packages || [];
+                    break;
+                case 'excursion':
+                    allItems = excursions || [];
+                    break;
+            }
+
+            // If no items available for this service, show message
+            if (allItems.length === 0) {
+                container.innerHTML = '<div class="col-12 text-center"><p class="text-muted">No ' + selectedService + 's available at the moment.</p></div>';
+                return;
+            }
+
+            // Get 3 random items
+            displayedItems = getRandomItems(allItems, 3);
+
+            displayedItems.forEach((item, index) => {
+                const itemCard = document.createElement('div');
+                itemCard.className = 'col-md-6 item-card';
+                itemCard.dataset.index = index;
+                itemCard.innerHTML = `
+                    <img src="${item.image || item.gallery?.[0] || 'https://via.placeholder.com/300x150'}" alt="${item.title}">
+                    <h6>${item.title}</h6>
+                    <p>${item.subdescription || item.description?.substring(0, 100) + '...'}</p>
+                    <p class="text-primary fw-bold">${item.price || 'Price on request'}</p>
+                `;
+                itemCard.addEventListener('click', function() {
+                    document.querySelectorAll('.item-card').forEach(c => c.classList.remove('selected'));
+                    this.classList.add('selected');
+                    selectedItem = item;
+                });
+                container.appendChild(itemCard);
+            });
+
+            // Setup search functionality
+            setupSearch();
+        }
+
+        // Get random items from array
+        function getRandomItems(array, count) {
+            const shuffled = [...array].sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, Math.min(count, array.length));
+        }
+
+        // Setup search functionality
+        function setupSearch() {
+            const searchInput = document.getElementById('itemSearch');
+            const resultsContainer = document.getElementById('autocomplete-results');
+
+            searchInput.addEventListener('input', function() {
+                const query = this.value.toLowerCase().trim();
+                resultsContainer.innerHTML = '';
+
+                if (query.length === 0) {
+                    resultsContainer.style.display = 'none';
+                    return;
+                }
+
+                const matches = allItems.filter(item =>
+                    item.title.toLowerCase().includes(query) ||
+                    (item.description && item.description.toLowerCase().includes(query)) ||
+                    (item.subdescription && item.subdescription.toLowerCase().includes(query))
+                ).slice(0, 5); // Limit to 5 results
+
+                if (matches.length > 0) {
+                    matches.forEach((item, index) => {
+                        const resultItem = document.createElement('div');
+                        resultItem.className = 'autocomplete-item';
+                        resultItem.innerHTML = `<img src="${item.image || item.gallery?.[0] || 'https://via.placeholder.com/50x50'}" alt="${item.title}"><div class="item-text">${item.title}</div>`;
+                        resultItem.addEventListener('click', function() {
+                            searchInput.value = item.title;
+                            resultsContainer.style.display = 'none';
+                            selectItemFromSearch(item);
+                        });
+                        resultsContainer.appendChild(resultItem);
+                    });
+                    resultsContainer.style.display = 'block';
+                } else {
+                    resultsContainer.style.display = 'none';
+                }
+            });
+
+            // Hide results when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!searchInput.contains(e.target) && !resultsContainer.contains(e.target)) {
+                    resultsContainer.style.display = 'none';
+                }
+            });
+        }
+
+        // Select item from search
+        function selectItemFromSearch(item) {
+            // Clear current selection
+            document.querySelectorAll('.item-card').forEach(c => c.classList.remove('selected'));
+            selectedItem = item;
+
+            // If item is not in displayed items, replace one random item with it
+            if (!displayedItems.includes(item)) {
+                const randomIndex = Math.floor(Math.random() * displayedItems.length);
+                displayedItems[randomIndex] = item;
+                populateItems(); // Re-populate to show the new item
+            }
+
+            // Highlight the selected item
+            const itemCards = document.querySelectorAll('.item-card');
+            itemCards.forEach(card => {
+                const title = card.querySelector('h6').textContent;
+                if (title === item.title) {
+                    card.classList.add('selected');
+                }
+            });
+        }
+
+        // Populate summary
+        function populateSummary() {
+            const summary = document.getElementById('bookingSummary');
+            summary.innerHTML = `
+                <h5>Booking Summary</h5>
+                <p><strong>Service:</strong> ${selectedService.charAt(0).toUpperCase() + selectedService.slice(1)}</p>
+                <p><strong>Item:</strong> ${selectedItem.title}</p>
+                <p><strong>Name:</strong> ${bookingData.firstName} ${bookingData.lastName}</p>
+                <p><strong>Email:</strong> ${bookingData.email}</p>
+                <p><strong>Phone:</strong> ${bookingData.phone}</p>
+                <p><strong>Check-in:</strong> ${bookingData.checkIn}</p>
+                <p><strong>Check-out:</strong> ${bookingData.checkOut}</p>
+                <p><strong>Guests:</strong> ${bookingData.guests}</p>
+                ${bookingData.pickupLocation ? `<p><strong>Pick-up Location:</strong> ${bookingData.pickupLocation}</p>` : ''}
+                ${bookingData.specialRequests ? `<p><strong>Special Requests:</strong> ${bookingData.specialRequests}</p>` : ''}
+            `;
+        }
+
+        // Submit booking
+        document.getElementById('submitBooking').addEventListener('click', function() {
+            // Show success modal
+            const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+            successModal.show();
+            // Here you would typically send the data to a server
+            console.log('Booking Data:', bookingData);
+
+            // Auto-close modal after 2 seconds and reset form
+            setTimeout(function() {
+                successModal.hide();
+                // Reset form and go back to step 1
+                resetForm();
+            }, 2000);
+        });
+
+        // Cancel booking
+        document.getElementById('cancelBooking').addEventListener('click', function() {
+            const cancelModal = new bootstrap.Modal(document.getElementById('cancelModal'));
+            cancelModal.show();
+        });
+
+        // Confirm cancel
+        document.getElementById('confirmCancel').addEventListener('click', function() {
+            const cancelModal = bootstrap.Modal.getInstance(document.getElementById('cancelModal'));
+            cancelModal.hide();
+            resetForm();
+        });
+
+        // Function to reset the form
+        function resetForm() {
+            // Clear form inputs
+            document.getElementById('personalForm').reset();
+            // Reset variables
+            currentStep = 1;
+            selectedService = '';
+            selectedItem = null;
+            bookingData = {};
+            // Clear selections
+            document.querySelectorAll('.service-card').forEach(c => c.classList.remove('selected'));
+            document.querySelectorAll('.item-card').forEach(c => c.classList.remove('selected'));
+            document.getElementById('serviceTypeText').textContent = '';
+            document.getElementById('itemsContainer').innerHTML = '';
+            document.getElementById('bookingSummary').innerHTML = '';
+            // Show step 1
+            showStep(1);
+        }
+
+        // Dynamic Hero Text Cycling
+        const heroTitles = [
+            "Book Your Zanzibar Adventure",
+            "Reserve Tours & Excursions",
+            "Book Car Rentals Today",
+            "Secure Your Package Deal"
+        ];
+
+        const heroSubtitles = [
+            "Reserve tours, car rentals, packages, and excursions for an unforgettable experience.",
+            "Book guided tours and exciting excursions across Zanzibar's stunning landscapes.",
+            "Rent vehicles and explore at your own pace with our car rental services.",
+            "Choose from our complete travel packages tailored for your perfect vacation."
+        ];
+
+        let currentIndex = 0;
+        const heroSection = document.querySelector('.hero');
+        const titleElement = document.getElementById('hero-title');
+        const subtitleElement = document.getElementById('hero-subtitle');
+
+        function changeHeroText() {
+            // Fade out
+            heroSection.classList.add('fade-out');
+            setTimeout(() => {
+                // Change text
+                currentIndex = (currentIndex + 1) % heroTitles.length;
+                titleElement.textContent = heroTitles[currentIndex];
+                subtitleElement.textContent = heroSubtitles[currentIndex];
+                // Fade in
+                heroSection.classList.remove('fade-out');
+                heroSection.classList.add('fade-in');
+                setTimeout(() => {
+                    heroSection.classList.remove('fade-in');
+                }, 1500);
+            }, 1500);
+        }
+
+        // Change text every 5 seconds
+        setInterval(changeHeroText, 5000);
+    </script>
+</body>
+</html>

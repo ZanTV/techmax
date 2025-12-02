@@ -1,0 +1,71 @@
+ /* Scroll-Up Button Styles */
+    .scroll-up-btn {
+      position: fixed;
+      bottom: 40px;
+      right: 20px;
+      width: 56px;
+      height: 56px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(35px);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s ease, transform 0.3s ease;
+      box-shadow: 0 0 8px rgba(255, 107, 53, 0.35), 0 0 20px rgba(255, 107, 53, 0.4) inset;
+      z-index: 1000;
+      border: 1.5px solid rgba(255, 107, 53, 0.35);
+      animation: pulseGlow 3s infinite alternate;
+      backdrop-filter: saturate(1.2) blur(15px);
+      -webkit-backdrop-filter: saturate(1.2) blur(15px);
+      -moz-backdrop-filter: saturate(1.2) blur(15px);
+      -o-backdrop-filter: saturate(1.2) blur(15px);
+    }
+
+    .scroll-up-btn.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .scroll-up-btn:hover {
+      transform: translateY(-5px) scale(1.12);
+      box-shadow: 0 0 18px rgba(255, 107, 53, 0.6), 0 0 38px rgba(255, 107, 53, 0.7) inset;
+      animation-play-state: paused;
+    }
+
+    @keyframes pulseGlow {
+      0% {
+        box-shadow: 0 0 8px rgba(255, 107, 53, 0.35), 0 0 20px rgba(255, 107, 53, 0.4) inset;
+      }
+      100% {
+        box-shadow: 0 0 18px rgba(255, 107, 53, 0.6), 0 0 38px rgba(255, 107, 53, 0.7) inset;
+      }
+    }
+
+    .scroll-icon {
+      color: #ff6b35;
+      font-size: 26px;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .scroll-up-btn:hover .scroll-icon {
+      transform: translateY(-4px);
+      color: #f7931e;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .scroll-up-btn {
+        width: 45px;
+        height: 45px;
+        bottom: 15px;
+        right: 15px;
+      }
+      .scroll-icon {
+        font-size: 20px;
+      }
+    }
